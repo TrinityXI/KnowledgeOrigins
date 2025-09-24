@@ -1,0 +1,56 @@
+# LightRAG MVP Service - 简化版 Docker Compose
+# 只启动核心服务，没有复杂的监控和代理
+
+version: '3.8'
+
+services:
+  lightrag-service:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: runtime
+    image: lightrag-service:mvp0.1
+    container_name: lightrag-mvp0.1
+    restart: unless-stopped
+
+    # 环境变量
+    environment:
+      # LLM配置 (从环境变量传入)
+      - LLM_API_KEY=${LLM_API_KEY:-your_api_key_here}
+      - LLM_BASE_URL=${LLM_BASE_URL:-https://proxy.infix-ai.xyz}
+      - LLM_MODEL=${LLM_MODEL:-gpt-4o-mini}
+
+    # 端口映射
+    ports:
+      - "8002:8002"
+
+    # 卷挂载
+    volumes:
+      # 数据文件 (必须挂载现有数据，允许写入缓存)
+      - ./data:/app/data
+      # 日志目录
+      - lightrag_logs:/app/logs
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 1G
+          cpus: '0.5'
+
+# 数据卷配置
+volumes:
+  lightrag_logs:
+    driver: local
+    name: lightrag_mvp_logs
