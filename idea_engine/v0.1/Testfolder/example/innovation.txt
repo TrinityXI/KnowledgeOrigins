@@ -1,0 +1,58 @@
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "大模型训练有哪些创新点？",
+    "mode": "local"
+  }'
+{"status":"success","query":"大模型训练有哪些创新点？","answer":"在大模型训练领域，近年来出现了多项创新点，主要集中在模型优化、计算效率、内存优化和数据选择等方面。以下是一些关键的创新点：\n\n### 1. 模型优化\n模型优化的研究主要关注如何提高模型的性能和质量。例如，通过分析“分叉令牌”在文本生成过程中的作用，可以更好地理解和评估大型语言模型（LLMs）的不确定性，从而提升生成文本的质量和一致性[KG] Forking Paths in Neural Text Generation ~ Uncertainty Estimation。\n\n### 2. 计算效率\n计算效率的提升是大模型训练中的一个重要方向。研究表明，在推理阶段动态分配计算资源的“计算最优”策略，可以显著提高推理效率，尤其是在处理复杂任务时[DC] Scaling LLM Test-Time Compute Optimally Can Be More Effective than Scaling Parameters for Reasoning。\n\n### 3. 内存优化\n内存优化技术如SqueezeAttention，通过层级优化的方式对KV-cache进行动态分配，显著降低了内存消耗并提升了推理速度。这种方法适用于资源受限的环境，能够在多种LLM和基准测试中实现高达2.2倍的推理吞吐量提升[DC] SqueezeAttention: 2D Management of KV-Cache in LLM Inference via Layer-wise Optimal Budget。\n\n### 4. 数据选择\n在计算资源受限的情况下，数据选择的有效性直接影响模型的训练效果。研究者们提出了一种新的数据选择框架，考虑计算资源的限制，通过引入成本感知的效用函数，优化数据选择过程，从而提高模型的泛化能力和降低训练成本[DC] Compute-Constrained Data Selection。\n\n### 5. 量化技术\n量化技术的应用使得模型在保持性能的同时，减少了模型的大小和计算资源需求。研究表明，三元语言模型（Ternary Language Models）在大规模预训练中表现优于传统的浮点模型和量化模型，展示了低比特宽度模型的潜力[DC] Surprising Effectiveness of pretraining Ternary Language Model at Scale。\n\n这些创新点不仅推动了大模型训练的效率和效果，也为未来的研究提供了新的方向。\n\n### References\n- [KG] Forking Paths in Neural Text Generation ~ Uncertainty Estimation\n- [DC] Scaling LLM Test-Time Compute Optimally Can Be More Effective than Scaling Parameters for Reasoning\n- [DC] SqueezeAttention: 2D Management of KV-Cache in LLM Inference via Layer-wise Optimal Budget\n- [DC] Compute-Constrained Data Selection\n- [DC] Surprising Effectiveness of pretraining Ternary Language Model at Scale","metadata":{"response_time":13.81,"answer_length":1459,"mode":"local","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:44:42"},"retrieval_data":null}%                                                                             
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "大模型训练有哪些创新点？",
+    "mode": "global"
+  }'
+{"status":"success","query":"大模型训练有哪些创新点？","answer":"在大模型训练领域，近年来出现了多项创新点，主要集中在模型架构、训练方法和数据生成等方面。以下是一些关键的创新点：\n\n### 1. 技术创新\n- **模态预融合策略**：LLaVA-Mini提出了一种模态预融合策略，通过将视觉信息与文本令牌融合，显著减少了视觉令牌的数量，从而提高了模型的效率和响应速度。[KG] LLaVA-Mini\n- **自生成数据训练**：REFUEL方法利用自生成数据训练来优化多轮对话中的策略，解决了传统方法中的协变量偏移问题。[KG] REFUEL ~ 自生成数据训练\n- **Spike-Aware Adam优化器**：SPAM优化器通过引入动量重置和针对梯度尖峰的裁剪策略，提高了大模型训练的稳定性，减少了训练中断的风险。[DC] SPAM: Spike-Aware Adam with Momentum Reset for Stable LLM Training\n\n### 2. 数据生成与优化\n- **数据生成框架**：在《What Matters in Learning from Large-Scale Datasets for Robot Manipulation》中，提出了一种数据生成框架，能够程序化地模拟数据集的多样性，降低了数据收集的成本。[KG] Data Generation Framework ~ What Matters in Learning from Large-Scale Datasets for Robot Manipulation\n- **合成数据生成**：在《Scaling Instruction-tuned LLMs to Million-token Contexts via Hierarchical Synthetic Data Generation》中，提出了一种合成数据生成策略，旨在扩展模型的上下文窗口，解决长上下文推理中的数据稀缺问题。[DC] Scaling Instruction-tuned LLMs to Million-token Contexts via Hierarchical Synthetic Data Generation\n\n### 3. 模型压缩与适应\n- **PruneNet模型压缩**：通过将模型剪枝视为策略学习过程，PruneNet消除了对外部校准数据集的需求，提高了剪枝的灵活性和可扩展性。[DC] You Only Prune Once: Designing Calibration-Free Model Compression With Policy Learning\n- **Generative Adapter**：该方法通过一次前向传播将上下文编码到语言模型的参数中，实现了高效的适应，显著降低了训练和推理的成本。[DC] Generative Adapter: Contextualizing Language Models in Parameters with A Single Forward Pass\n\n这些创新点不仅提升了大模型的训练效率和性能，还为未来的研究和应用提供了新的思路和方法。\n\n### References\n- [KG] LLaVA-Mini\n- [KG] REFUEL ~ 自生成数据训练\n- [DC] SPAM: Spike-Aware Adam with Momentum Reset for Stable LLM Training\n- [KG] Data Generation Framework ~ What Matters in Learning from Large-Scale Datasets for Robot Manipulation\n- [DC] Scaling Instruction-tuned LLMs to Million-token Contexts via Hierarchical Synthetic Data Generation\n- [DC] You Only Prune Once: Designing Calibration-Free Model Compression With Policy Learning\n- [DC] Generative Adapter: Contextualizing Language Models in Parameters with A Single Forward Pass","metadata":{"response_time":15.92,"answer_length":1858,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:45:13"},"retrieval_data":null}%  
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "大模型强化学习训练方面有哪些创新点？",
+    "mode": "global"
+  }'
+{"status":"success","query":"大模型强化学习训练方面有哪些创新点？","answer":"在大模型强化学习训练方面，有多个创新点值得关注：\n\n### 1. **MaestroMotif**\nMaestroMotif是一种将大型语言模型（LLMs）与强化学习相结合的方法。该方法通过自然语言描述自动生成奖励机制，并利用LLMs的代码生成能力来训练和组合技能。这种方法不仅提高了技能设计的效率，还增强了AI代理的适应性和性能。[KG] MaestroMotif\n\n### 2. **DITTO**\nDITTO方法通过利用少量用户演示作为反馈，直接对大型语言模型进行对齐。该方法的创新在于能够在极少的示例下实现有效的模型对齐，并通过在线模仿学习优化模型输出。这种方法在个性化内容生成和人机交互方面具有广泛的应用潜力。[KG] DITTO\n\n### 3. **Efficient Reinforcement Learning with Large Language Model Priors**\n该研究将大型语言模型作为先验知识引入强化学习框架，显著提高了样本效率，减少了探索和优化的复杂性。通过贝叶斯推理方法将LLM的行动分布整合到RL中，为处理复杂的序列决策任务提供了新的视角。[KG] Efficient Reinforcement Learning with Large Language Model Priors\n\n### 4. **Safety-Prioritizing Curricula for Constrained Reinforcement Learning**\n该论文提出了一种安全课程生成方法（SCG），将受限强化学习与课程学习相结合。SCG通过优先生成安全性较高的任务，确保在训练过程中RL代理不会违反安全约束，从而在安全关键领域（如自动驾驶和医疗决策）中有效训练RL代理。[KG] Safety-Prioritizing Curricula for Constrained Reinforcement Learning\n\n### 5. **SPaR: Self-Play with Tree-Search Refinement**\nSPaR提出了一种新的自我游戏框架，结合了树搜索自我精炼的策略，以生成有效且可比较的偏好对。这一方法通过自我对弈的方式，使得大型语言模型能够在遵循指令的同时，减少不必要的内容变异，从而更好地识别和反映指令中的细微要求。[KG] SPaR: Self-Play with Tree-Search Refinement\n\n这些创新点展示了在大模型强化学习训练中，如何通过结合不同的技术和方法来提升模型的性能和适应性。\n\n### References\n- [KG] MaestroMotif\n- [KG] DITTO\n- [KG] Efficient Reinforcement Learning with Large Language Model Priors\n- [KG] Safety-Prioritizing Curricula for Constrained Reinforcement Learning\n- [KG] SPaR: Self-Play with Tree-Search Refinement","metadata":{"response_time":15.17,"answer_length":1337,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:46:54"},"retrieval_data":null}%                                      
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "具体介绍下DITTO？以及和它相关的工作是什么？",
+    "mode": "global"
+  }'
+{"status":"success","query":"具体介绍下DITTO？以及和它相关的工作是什么？","answer":"### DITTO 方法概述\n\nDITTO（演示迭代任务优化）是一种新提出的方法，旨在通过利用少量用户演示作为反馈，直接对大型语言模型（LLM）进行对齐。该方法的核心创新在于其能够在极少的示例（少于10个）下实现有效的模型对齐，这与传统需要大量数据的监督微调或强化学习方法形成鲜明对比。DITTO 还引入了在线模仿学习的概念，通过将用户的演示视为优于 LLM 输出的偏好，生成在线比较数据，从而优化模型输出。\n\n### DITTO 的相关工作\n\nDITTO 方法与以下几个关键概念和技术密切相关：\n\n1. **少量示例学习**：DITTO 利用少量示例实现个性化对齐，挑战了传统对齐方法的有效性和适用性。\n2. **在线模仿学习**：该方法将在线模仿学习的思想引入到语言模型的训练中，为未来的研究提供了新的思路。\n3. **用户演示**：DITTO 利用用户演示作为反馈，增强了模型的个性化和用户满意度。\n\n此外，DITTO 还与对齐、个性化内容生成和人机交互等领域的研究紧密相关，展示了其在多个应用场景中的广泛潜力。\n\n### 总结\n\nDITTO 方法通过创新的对齐机制和少量示例学习，提供了一种高效的方式来优化大型语言模型的输出，具有重要的理论和应用价值。其相关工作涵盖了少量示例学习、在线模仿学习和用户反馈等多个方面，为未来的研究提供了丰富的方向。\n\n### 参考文献\n\n- [KG] DITTO\n- [KG] DITTO ~ 少量示例学习\n- [KG] DITTO ~ 在线模仿学习\n- [DC] Aligning Language Models with Demonstrated Feedback","metadata":{"response_time":10.47,"answer_length":704,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:50:13"},"retrieval_data":null}%                                                    
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "我想在DITTO的基础上进行创新可以有哪些思路，或者这个创新可以基于哪些其他工作来做？",
+    "mode": "global"
+  }'
+{"status":"success","query":"我想在DITTO的基础上进行创新可以有哪些思路，或者这个创新可以基于哪些其他工作来做？","answer":"在DITTO的基础上进行创新，可以考虑以下几个思路和相关工作：\n\n### 1. **结合扩散模型与自回归模型**\n可以借鉴DART（Denoising Autoregressive Transformers）模型的思路，将自回归模型与扩散模型结合，提升生成效率和质量。DART通过迭代去噪图像块，利用与标准语言模型相同的架构进行空间和频谱去噪，这种方法可以为DITTO的创新提供新的视角和技术支持。\n\n### 2. **引入知识图谱**\n考虑使用SubgraphRAG框架，该框架在知识图谱基础上进行检索增强生成。通过结合知识图谱，可以提升DITTO在处理复杂查询时的推理能力，减少模型的幻觉现象，提高生成结果的准确性和可靠性。\n\n### 3. **多智能体系统**\n可以探索Diverse Multi-Agent Debate (DMAD)方法，通过引入多样化的推理策略，打破固定思维模式，促进更全面的讨论和更优的解决方案。这种方法可以增强DITTO在复杂问题上的推理能力。\n\n### 4. **优化推理过程**\n借鉴DOTS方法，通过最优推理轨迹搜索来增强大型语言模型的推理能力。动态调整推理策略，使得DITTO能够更好地适应不同类型的问题，提升其在复杂任务中的表现。\n\n### 5. **安全性与公平性**\n考虑ConceptPrune方法，通过剪枝技术实现对模型中不良概念的编辑，提升DITTO在生成内容时的安全性和公平性。这种方法可以帮助减少模型生成不安全内容的风险。\n\n### 结论\n通过结合上述方法和技术，可以为DITTO的创新提供多样化的思路和方向。这些创新不仅可以提升模型的性能，还能扩展其应用场景。\n\n### References\n- [KG] DART\n- [KG] SubgraphRAG\n- [KG] Diverse Multi-Agent Debate\n- [KG] DOTS\n- [KG] ConceptPrune","metadata":{"response_time":10.59,"answer_length":822,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:51:42"},"retrieval_data":null}%  
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "DOTS方法具体对应哪篇论文？",                                                       
+    "mode": "global"
+  }'
+{"status":"success","query":"DOTS方法具体对应哪篇论文？","answer":"DOTS方法具体对应的论文是《DOTS: Learning to Reason Dynamically in LLMs via Optimal Reasoning Trajectories Search》。这篇论文探讨了如何通过最优推理轨迹搜索来增强大型语言模型（LLMs）的推理能力，提出了动态推理和原子推理动作模块等核心技术创新。\n\n### 论文核心内容\n- **动态推理**：DOTS能够根据每个问题的特性动态调整推理过程。\n- **原子推理动作模块**：定义了可组合的推理动作模块，使推理过程更加灵活和高效。\n- **最优轨迹搜索**：通过迭代探索和评估，为每个训练问题搜索最优的推理轨迹，从而提高推理的准确性和效率。\n\n这篇论文在ICLR 2025会议上展示了该领域的最新技术进展和创新思路。\n\n### 参考文献\n- [DC] 论文ID：tn2mjzjSyR","metadata":{"response_time":9.12,"answer_length":384,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:54:11"},"retrieval_data":null}%                                                                                                         
+jjl@jjldeMacBook-Pro v0.1 % curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "是否还有其他有关最优推理轨迹搜索的文章？",
+    "mode": "global"
+  }'
+{"status":"success","query":"是否还有其他有关最优推理轨迹搜索的文章？","answer":"关于最优推理轨迹搜索（Optimal Reasoning Trajectories Search），以下是相关的文章和研究：\n\n1. **DOTS: Learning to Reason Dynamically in LLMs via Optimal Reasoning Trajectories Search**  \n   这篇论文提出了一种名为DOTS的方法，旨在通过最优推理轨迹搜索来增强大型语言模型（LLMs）的推理能力。该方法能够根据每个问题的特性动态调整推理过程，并通过迭代探索和评估，为每个训练问题搜索最优的推理轨迹，从而提高推理的准确性和效率。\n\n2. **Scaling LLM Test-Time Compute Optimally Can Be More Effective Than Scaling Parameters for Reasoning**  \n   这篇论文探讨了在推理阶段动态分配计算资源的“计算最优”策略，强调了推理计算的优化可能比单纯增加模型参数更为有效。\n\n这些文章展示了最优推理轨迹搜索在提升推理能力和效率方面的重要性。\n\n### 参考文献\n- [KG] DOTS\n- [KG] Optimal Reasoning Trajectories Search ~ Reasoning Process Optimization\n- [DC] DOTS: Learning to Reason Dynamically in LLMs via Optimal Reasoning Trajectories Search\n- [DC] Scaling LLM Test-Time Compute Optimally Can Be More Effective Than Scaling Parameters for Reasoning","metadata":{"response_time":8.68,"answer_length":785,"mode":"global","rerank_enabled":false,"top_k":10,"debug_mode":false,"timestamp":"2025-09-24 08:55:26"},"retrieval_data":null}% 
+
+
+curl -X POST "http://localhost:8002/api/v1/query" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "基于2025 iclr的论文，如果我想投递2026年iclr，你建议我研究哪些方向？为什么？",
+    "mode": "global",
+    "top_k": 10
+  }'
